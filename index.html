@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reverse Scrabble</title>
+	
+    <style>
+      input {width: 100%;}
+      #control-box {
+	  height: 500px;
+	  width: 250px;
+	  float: left;
+	  margin-right: 20px;
+      }
+      #word-canvas{
+	  background-color: #ffffcc;
+	  border: 1px solid black;
+      }
+    </style>
+
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="lexicon.json"></script>
+    
+  </head>
+   
+  <body>
+    <div id="control-box">
+      <h2>Reverse Scrabble</h2>
+      <button id="gameStart"
+	      style="font-size:30px; color:blue;"
+	      onclick="gameStart()">Start</button>
+      <table style="margin-top:20px;">
+	<tr>
+	  <td></td>
+	 <td align="left">SCORE</td>
+	</tr>
+	<tr>
+	  <td align="right">HUMAN:</td>
+	  <td><input type="text" id="score-human" value="0" readonly></td>
+	</tr>
+	<tr>
+	  <td align="right">COMPUTER:</td>
+	  <td><input type="text" id="score-computer" value="0" readonly></td>
+	</tr>
+      </table>
+      <table style="margin-top:20px;margin-bottom:20px;">
+	<tr>
+	  <td align="right">WORD:</td>
+	  <td><input type="text" id="word-box" value="xxx" readonly></td>
+	</tr>
+      </table>
+      <textarea id="word-history" rows="8" style="width:100%;overflow-y:auto;resize:none;" readonly>
+      </textarea>
+    </div>
+    
+    <canvas id="word-canvas">
+      Your browser does not support HTML canvas.
+    </canvas>
+
+    <script>
+      const canvas = document.getElementById("word-canvas");
+
+      const BOARD_ROWS = 10;
+      const BOARD_COLUMNS = 10;
+      const BOARD_TILE_SIZE = 42; // pixels
+      const BOARD_TILE_MARGIN = 12; // pixels
+      
+      //canvas.height = window.innerHeight;
+      //canvas.width = window.innerWidth;
+      // add 1px for border
+      canvas.height = 1 + (BOARD_ROWS * BOARD_TILE_SIZE) + ((BOARD_ROWS - 1) * BOARD_TILE_MARGIN);
+      canvas.width = 1 + (BOARD_COLUMNS * BOARD_TILE_SIZE) + ((BOARD_COLUMNS - 1) * BOARD_TILE_MARGIN);
+      
+      //const canvasHeight = canvas.getBoundingClientRect().height;
+      //const canvasWidth = canvas.getBoundingClientRect().width;
+      
+      //console.log('CANVAS HEIGHT: ' + canvasHeight);
+      //console.log('CANVAS WIDTH: ' + canvasWidth);
+
+      const BOARD = new Board(canvas,
+			      BOARD_ROWS, BOARD_COLUMNS,
+			      BOARD_TILE_SIZE, BOARD_TILE_MARGIN);
+    </script>
+</body>
+</html>
