@@ -23,7 +23,8 @@ The dictionary (lexicon.json) is a JSON file of English words/clues organized as
 New lexicons can be easily built using the gendict.py tool.
 
 ## License
-None. Use the code freely.
+Copyright 2024 Robert Devine. All rights reserved.
+For non-commercial uses, no license is needed.
 
 ## Overview of the project
 - Version 0.01 (likely buggy!)
